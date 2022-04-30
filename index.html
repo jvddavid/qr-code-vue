@@ -3,7 +3,7 @@ Author: João Victor David de Oliveira (j.victordavid2@gmail.com)
 index.html (c) 2022
 Desc: description
 Created:  2022-04-30T20:23:38.986Z
-Modified: 2022-04-30T20:52:49.407Z
+Modified: 2022-04-30T20:57:33.740Z
 -->
 
 <!DOCTYPE html>
@@ -47,10 +47,8 @@ Modified: 2022-04-30T20:52:49.407Z
         qrCode() {
           if (this.text) {
             return new QRious({
-              element: document.getElementById('qr-code'),
               value: this.text,
-              size: 250,
-              level: 'H'
+              size: 250
             }).toDataURL();
           }
         }
