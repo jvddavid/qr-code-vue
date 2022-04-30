@@ -1,0 +1,62 @@
+<!--
+Author: João Victor David de Oliveira (j.victordavid2@gmail.com)
+index.html (c) 2022
+Desc: description
+Created:  2022-04-30T20:23:38.986Z
+Modified: 2022-04-30T20:49:32.826Z
+-->
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="João Victor David de Oliveira">
+  <meta name="description" content="QR Code generator">
+  <link rel="stylesheet" href="/assets/css/styles.css">
+  <script src="https://unpkg.com/vue@3"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+  <title>QR Code Generator</title>
+</head>
+
+<body>
+  <div id="app">
+    <div class="container">
+      <div>
+        <h1>QR Code</h1>
+        <div class="form-group">
+          <label for="text">Text</label>
+          <input type="text" id="text" v-model="text" class="form-control">
+        </div>
+        <div class="qr-code">
+          <img v-if="qrCode" :src="qrCode" alt="QR Code">
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    Vue.createApp({
+      data: () => {
+        return {
+          text: 'https://jvddavid.github.io'
+        }
+      },
+      computed: {
+        qrCode() {
+          if (this.text) {
+            return new QRious({
+              element: document.getElementById('qr-code'),
+              value: this.text,
+              size: 250,
+              level: 'H'
+            }).toDataURL();
+          }
+        }
+      }
+    }).mount('#app')
+  </script>
+</body>
+
+</html>
